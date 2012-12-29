@@ -1,5 +1,7 @@
 require "directory_maid/version"
 
 module DirectoryMaid
-  # Your code goes here...
+  def self.version_string
+    "DirectoryMaid version #{DirectoryMaid::VERSION}"
+  end
 end

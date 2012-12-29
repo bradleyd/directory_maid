@@ -4,8 +4,8 @@ require File.expand_path('../lib/directory_maid/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Bradley Smith"]
   gem.email         = ["bradleydsmith@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{A daemon that cleans up your directories}
+  gem.summary       = %q{A daemon that cleans up your directories}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "directory_maid"
   gem.require_paths = ["lib"]
   gem.version       = DirectoryMaid::VERSION
+
+  gem.add_development_dependency "rspec"
 end
