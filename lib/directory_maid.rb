@@ -6,4 +6,11 @@ module DirectoryMaid
   def self.version_string
     "DirectoryMaid version #{DirectoryMaid::VERSION}"
   end
+
+  def self.symbolize_keys! hash
+    keys.each do |key|
+      hash[(key.to_sym rescue key) || key] = delete(key)
+    end
+    hash
+  end
 end

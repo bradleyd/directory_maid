@@ -1,9 +1,9 @@
 require "spec_helper"
 require "find"
+
 describe DirectoryMaid do
   before :each do
    @dir = "spec/support/crawl" 
-   @png = "bar.png"
    @dm  = DirectoryMaid::Crawl.new(directory: @dir)
   end
 
@@ -26,6 +26,11 @@ describe DirectoryMaid do
       reg = File.join(@dir, "*.png")
       result = @dm.where(:extension => "png")
       File.basename(result.first).should eq("bar.png")
+    end
+
+    it "should return an empty array if no match is found" do
+      result = @dm.where(:name => "foos")
+      result.empty?.should be_true
     end
 
   end

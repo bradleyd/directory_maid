@@ -10,12 +10,17 @@ module  DirectoryMaid
     # @param [Hash] :name, :extension
     # @return [Array] of files that match :name or :extension
     # @TODO: add file stat for date matching etc..
-    def where(opts={})
+    def where(opts)
       raise "No options" if opts.empty?
       if opts[:name]
         @files.select { |e| e if File.basename(e) == opts[:name]  }
       elsif opts[:extension]
         @files.select { |e| e if File.extname(File.basename(e)) == ".#{opts[:extension]}"  }
+      elsif opts[:extension] && opts[:name]
+        @files.select { |e| 
+          e if File.extname(File.basename(e)) == ".#{opts[:extension]}" && 
+          File.basename(e) == opts[:name]  
+        }
       else
         #TODO need to limit this to only first 25 
         @files.to_a
