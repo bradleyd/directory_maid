@@ -1,29 +1,32 @@
 module  DirectoryMaid
   class Crawl
-    attr_accessor :directory
+    attr_accessor :directory, :files
 
     def initialize(opts={})
       @directory = opts.fetch(:directory, './')
       @files = find
     end
+
     # searches a directory 
     # @param [Hash] :name, :extension
     # @return [Array] of files that match :name or :extension
     # @TODO: add file stat for date matching etc..
     def where(opts)
       raise "No options" if opts.empty?
-      if opts[:name]
-        @files.select { |e| e if File.basename(e) == opts[:name]  }
+      
+      if opts[:extension] && opts[:name]
+        build_file = "#{opts[:name]}.#{opts[:extension]}"
+        regex = /#{build_file}/
+        @files.grep(regex)
+      elsif opts[:name]
+        regex = /#{opts[:name]}/
+        @files.grep(regex)
       elsif opts[:extension]
-        @files.select { |e| e if File.extname(File.basename(e)) == ".#{opts[:extension]}"  }
-      elsif opts[:extension] && opts[:name]
-        @files.select { |e| 
-          e if File.extname(File.basename(e)) == ".#{opts[:extension]}" && 
-          File.basename(e) == opts[:name]  
-        }
+        # /[^\/]*\s*.png/ ???
+        regex = /#{opts[:extension]}/
+        @files.grep(regex)
       else
-        #TODO need to limit this to only first 25 
-        @files.to_a
+        # raise Error
       end
     end
 

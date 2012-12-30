@@ -23,7 +23,6 @@ describe DirectoryMaid do
     end
 
     it "should find files by extension type" do
-      reg = File.join(@dir, "*.png")
       result = @dm.where(:extension => "png")
       File.basename(result.first).should eq("bar.png")
     end
