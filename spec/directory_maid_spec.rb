@@ -34,10 +34,8 @@ describe DirectoryMaid do
 
   end
 
-  describe DirectoryMaid::File do
-    it "should return stat info on a file" do
-      my_file = @dm.where(:name => "bar")
-      p my_file.first.info 
-    end  
-  end
+  #describe DirectoryMaid::File do
+  #  it "should return stat info on a file" do
+  #  end  
+  #end
 end
