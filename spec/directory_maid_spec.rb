@@ -27,6 +27,11 @@ describe DirectoryMaid do
       File.basename(result.first).should eq("bar.png")
     end
 
+    it "should find a file by name and extenion" do
+      result = @dm.where(name: 'foo', :extension => "png")
+      File.basename(result.first).should eq("foo.png")
+    end
+
     it "should return an empty array if no match is found" do
       result = @dm.where(:name => "foos")
       result.empty?.should be_true
