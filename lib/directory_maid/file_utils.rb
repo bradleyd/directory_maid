@@ -1,14 +1,10 @@
-#class String
-#  def self.info
-#    File.lstat(self)
-#  end
-#end
-
+# Monkey patching String to add lstat 
+# I am sure there is a better way to do this!
 module DirectoryMaid
-  class FileUtils
-    class << self
+  module FileUtils
+    class ::String
       def info
-        File.lstat self.class
+        File.lstat(self)
       end
     end
   end

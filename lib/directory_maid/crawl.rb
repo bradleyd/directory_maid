@@ -6,6 +6,7 @@ module  DirectoryMaid
   # @param [String] opts is opts includes directory
   # @return [Enumerator, Array, Class]
   class Crawl < DirectoryMaid::Base
+    include DirectoryMaid::FileUtils
     attr_accessor :directory, :files
 
     def initialize(opts={})

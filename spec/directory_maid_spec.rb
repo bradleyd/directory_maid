@@ -34,8 +34,15 @@ describe DirectoryMaid do
 
   end
 
-  #describe DirectoryMaid::File do
-  #  it "should return stat info on a file" do
-  #  end  
-  #end
+  describe DirectoryMaid::FileUtils do
+    it "should return stat class on a file" do
+      result = @dm.where(name: 'bar')
+      result.first.info.class.should eq(File::Stat)
+    end  
+
+    it "should have a ctmie for a specific file" do
+      result = @dm.where(name: 'bar')
+      result.first.info.ctime.class.should eq(Time)
+    end
+  end
 end
