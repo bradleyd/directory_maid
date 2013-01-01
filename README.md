@@ -18,7 +18,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+ So you have a cluttered directory?  Me too.  I was always bumping into files scattered around.
+ To ease my pain I use directory maid.
+  
 
 ## Contributing
 

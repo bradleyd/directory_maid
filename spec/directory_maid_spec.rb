@@ -17,7 +17,11 @@ describe DirectoryMaid do
       DirectoryMaid::Crawl.directory(@dir).class.should eq(Enumerator)
     end
 
-    it "should find a file `foo` in a given directory " do
+  end
+
+  describe "#where" do
+    
+    it "should find a file in a given directory " do
       result = @dm.where(:name => "foo")
       File.basename(result.first).should eq("foo")
     end
@@ -40,12 +44,13 @@ describe DirectoryMaid do
   end
 
   describe DirectoryMaid::FileUtils do
+
     it "should return stat class on a file" do
       result = @dm.where(name: 'bar')
       result.first.info.class.should eq(File::Stat)
     end  
 
-    it "should have a ctmie for a specific file" do
+    it "should have a ctime for a specific file" do
       result = @dm.where(name: 'bar')
       result.first.info.ctime.class.should eq(Time)
     end
