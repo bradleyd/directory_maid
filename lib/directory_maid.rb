@@ -1,6 +1,7 @@
 require "directory_maid/version"
 require "directory_maid/file_utils"
 require "directory_maid/crawl"
+require "directory_maid/config"
 require "find"
 
 module DirectoryMaid
